@@ -1,15 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        EmployeeBook employeeBook1 = new EmployeeBook();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        employeeBook1.addEmployee("ivanov", "ivan", "ivanovich", 1, 40000);
+        employeeBook1.addEmployee("antonov", "anton", "antonovich", 5, 20000);
+        employeeBook1.addEmployee("petrov", "petr", "petrovich", 2, 15000);
+        employeeBook1.addEmployee("nikitin", "nikita", "nikitich", 2, 21000);
+        employeeBook1.addEmployee("sergeev", "sergey", "sergeevich", 2, 50000);
+        employeeBook1.addEmployee("a", "v", "s", 3, 50000);
+
+        employeeBook1.allEmployees();
+        employeeBook1.removeEmployee(5);
+        employeeBook1.allEmployees();
+        employeeBook1.employeesInDepartment(2);
+        employeeBook1.indexSalary(10);
+        employeeBook1.allEmployees();
+        employeeBook1.addEmployee("a", "v", "s", 3, 45000);
+        employeeBook1.addEmployee("z", "x", "c", 4, 35000);
+        employeeBook1.addEmployee("q", "w", "e", 1, 27000);
+        employeeBook1.salaryLessThan(30000);
+        System.out.println(employeeBook1.maxSalaryInDepartment(1));
+        employeeBook1.findEmployeeById(6).setFirstName("Valera");
+        employeeBook1.findEmployeeById(6).setSalary(36000);
+        System.out.println(employeeBook1.findEmployeeById(6));
+        System.out.println(employeeBook1.findEmployeeById(11));
+
     }
 }
