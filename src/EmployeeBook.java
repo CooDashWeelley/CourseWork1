@@ -13,20 +13,13 @@ public class EmployeeBook {
                 Employee newEmployee = new Employee(lastName, firstName, middleName, department, salary);
                 this.employeeBook[i] = newEmployee;
                 break;
-            } else if (this.employeeBook[i] != null) {
-                continue;
-            } else {
-                System.out.println("not enough space");
             }
         }
     }
 
     public void removeEmployee(int id) {
         for (int i = 0; i < this.employeeBook.length; i++) {
-            if (this.employeeBook[i] == null) {
-                continue;
-            }
-            if (this.employeeBook[i].getId() == id) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getId() == id) {
                 this.employeeBook[i] = null;
                 break;
             }
@@ -35,10 +28,7 @@ public class EmployeeBook {
 
     public Employee findEmployeeById(int id) {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (employee.getId() == id) {
+            if (employee != null && employee.getId() == id) {
                 return employee;
             }
         }
@@ -47,20 +37,18 @@ public class EmployeeBook {
 
     public void allEmployees() {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
+            if (employee != null) {
+                System.out.println(employee);
             }
-            System.out.println(employee);
         }
     }
 
     public int monthSalary() {
         int sum = 0;
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
+            if (employee != null) {
+                sum += employee.getSalary();
             }
-            sum += employee.getSalary();
         }
         return sum;
     }
@@ -69,10 +57,7 @@ public class EmployeeBook {
         int minSalary = this.employeeBook[0].getSalary();
         int idOfMinSalary = 0;
         for (int i = 0; i < this.employeeBook.length; i++) {
-            if (this.employeeBook[i] == null) {
-                continue;
-            }
-            if (this.employeeBook[i].getSalary() < minSalary) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getSalary() < minSalary) {
                 minSalary = this.employeeBook[i].getSalary();
                 idOfMinSalary = i;
             }
@@ -84,10 +69,7 @@ public class EmployeeBook {
         int maxSalary = this.employeeBook[0].getSalary();
         int id = 0;
         for (int i = 0; i < this.employeeBook.length; i++) {
-            if (this.employeeBook[i] == null) {
-                continue;
-            }
-            if (this.employeeBook[i].getSalary() > maxSalary) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getSalary() > maxSalary) {
                 maxSalary = this.employeeBook[i].getSalary();
                 id = i;
             }
@@ -98,9 +80,7 @@ public class EmployeeBook {
     public int averageSalary() {
         int amountOfEmployee = 0;
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            } else {
+            if (employee != null) {
                 amountOfEmployee++;
             }
         }
@@ -109,19 +89,17 @@ public class EmployeeBook {
 
     public void fullNameOfAllEmployees() {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
+            if (employee != null) {
+                System.out.println(employee.getFullName());
             }
-            System.out.println(employee.getFullName());
         }
     }
 
     public void indexSalary(int index) {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
+            if (employee != null) {
+                employee.setSalary(employee.getSalary() + employee.getSalary() / 100 * index);
             }
-            employee.setSalary(employee.getSalary() + employee.getSalary() / 100 * index);
         }
     }
 
@@ -129,13 +107,10 @@ public class EmployeeBook {
         int minSalaryInDepartment = 0;
         int idOfMinSalaryInDepartment = 0;
         for (int i = 0; i < this.employeeBook.length; i++) {
-            if (this.employeeBook[i] == null) {
-                continue;
-            }
-            if (this.employeeBook[i].getDepartment() == department && minSalaryInDepartment == 0) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getDepartment() == department && minSalaryInDepartment == 0) {
                 minSalaryInDepartment = this.employeeBook[i].getSalary();
             }
-            if (this.employeeBook[i].getDepartment() == department && minSalaryInDepartment >= this.employeeBook[i].getSalary()) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getDepartment() == department && minSalaryInDepartment >= this.employeeBook[i].getSalary()) {
                 minSalaryInDepartment = this.employeeBook[i].getSalary();
                 idOfMinSalaryInDepartment = i;
             }
@@ -147,13 +122,10 @@ public class EmployeeBook {
         int maxSalaryInDepartment = 0;
         int idOfMinSalaryInDepartment = 0;
         for (int i = 0; i < this.employeeBook.length; i++) {
-            if (this.employeeBook[i] == null) {
-                continue;
-            }
-            if (this.employeeBook[i].getDepartment() == department && maxSalaryInDepartment == 0) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getDepartment() == department && maxSalaryInDepartment == 0) {
                 maxSalaryInDepartment = this.employeeBook[i].getSalary();
             }
-            if (this.employeeBook[i].getDepartment() == department && maxSalaryInDepartment <= this.employeeBook[i].getSalary()) {
+            if (this.employeeBook[i] != null && this.employeeBook[i].getDepartment() == department && maxSalaryInDepartment <= this.employeeBook[i].getSalary()) {
                 maxSalaryInDepartment = this.employeeBook[i].getSalary();
                 idOfMinSalaryInDepartment = i;
             }
@@ -164,10 +136,7 @@ public class EmployeeBook {
     public int monthSalaryInDepartment(int department) {
         int sum = 0;
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (employee.getDepartment() == department) {
+            if (employee != null && employee.getDepartment() == department) {
                 sum += employee.getSalary();
             }
         }
@@ -177,10 +146,7 @@ public class EmployeeBook {
     public int averageSalaryInDepartment(int department) {
         int amountOfEmployeeInDepartment = 0;
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (employee.getDepartment() == department) {
+            if (employee != null && employee.getDepartment() == department) {
                 amountOfEmployeeInDepartment++;
             }
         }
@@ -189,10 +155,7 @@ public class EmployeeBook {
 
     public void indexSalaryInDepartment(int department, int index) {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (employee.getDepartment() == department) {
+            if (employee != null && employee.getDepartment() == department) {
                 employee.setSalary(employee.getSalary() + employee.getSalary() / 100 * index);
             }
         }
@@ -200,10 +163,7 @@ public class EmployeeBook {
 
     public void employeesInDepartment(int department) {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (employee.getDepartment() == department) {
+            if (employee != null && employee.getDepartment() == department) {
                 System.out.println("ФИО: " + employee.getFullName() + ", ЗП: " + employee.getSalary());
             }
         }
@@ -211,10 +171,7 @@ public class EmployeeBook {
 
     public void salaryLessThan(int amount) {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (amount > employee.getSalary()) {
+            if (employee != null && amount > employee.getSalary()) {
                 System.out.println("id: " + employee.getId() + ", ФИО: " + employee.getFullName() + ", ЗП: " + employee.getSalary());
             }
         }
@@ -222,10 +179,7 @@ public class EmployeeBook {
 
     public void salaryMoreThan(int amount) {
         for (Employee employee : this.employeeBook) {
-            if (employee == null) {
-                continue;
-            }
-            if (amount < employee.getSalary()) {
+            if (employee != null && amount < employee.getSalary()) {
                 System.out.println("id: " + employee.getId() + ", ФИО: " + employee.getFullName() + ", ЗП: " + employee.getSalary());
             }
         }

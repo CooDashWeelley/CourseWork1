@@ -23,6 +23,7 @@ public class Main {
         employeeBook1.findEmployeeById(6).setFirstName("Valera");
         employeeBook1.findEmployeeById(6).setSalary(36000);
         System.out.println(employeeBook1.findEmployeeById(6));
+        System.out.println(employeeBook1.findEmployeeById(11));
 
     }
 }
