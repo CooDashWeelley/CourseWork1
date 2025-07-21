@@ -20,7 +20,7 @@ public class Employee {
         return this.firstName;
     }
 
-    public String setFirstName(String newFirstName ) {
+    public String setFirstName(String newFirstName) {
         return this.firstName = newFirstName;
     }
 
@@ -70,7 +70,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return getFullName() + ", " + department + ", " + salary;
+        return "ФИО: " + getFullName() + ", отдел: " + department + ", ЗП: " + salary + ", id:" + getId();
     }
 
     @Override
